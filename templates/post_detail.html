@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogs{% endblock title %}
+
+{% block body %}
+
+<div class="container mx-1 my-1">
+
+Title = {{object.title}}<br>
+Author = {{object.author.first_name}} {{object.author.last_name}}<br>
+Content = {{object.content}}<br>
+Created = {{object.created_on}}<br>
+
+</div>
+
+{% endblock body %}

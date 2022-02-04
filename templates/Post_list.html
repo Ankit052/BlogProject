@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogs{% endblock title %}
+
+{% block body %}
+
+
+<div class="container mx-1 my-1">
+
+    
+    {% for obj in object_list  %}
+    
+
+    Title = <a href = "{% url 'post_detail' obj.id %}">{{obj.title}}</a><br>
+    Author Name = <a href = "{% url 'author_detail' obj.author.id %}">{{obj.author.first_name }} {{obj.author.last_name}}</a> <br>
+    Created = {{obj.created_on}}<br>
+    <br>
+    {% endfor %}
+    
+    {% if is_paginated %}
+    
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a>
+    {% endif %}
+    
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a>
+    {% endif %}
+    
+    {% endif %}
+
+</div>
+    
+    {% endblock body %}
